@@ -1,0 +1,9 @@
+https://api.pokemontcg.io/v2/cards
+
+https://api.pokemontcg.io/v2/types
+
+https://api.pokemontcg.io/v2/subtypes
+
+https://api.pokemontcg.io/v2/supertypes
+
+https://api.pokemontcg.io/v2/rarities
