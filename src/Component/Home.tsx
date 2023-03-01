@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useFetch } from "../Hooks/useFetch";
 
 const Home = () => {
-  interface IPokemon {
-    id: string;
-    name: string;
-    supertype: string;
-    subtypes: string[];
-    level: string;
-    hp: string;
-    types: string[];
-  }
+  const { data } = useFetch("https://api.pokemontcg.io/v2/cards");
 
-  const [pokemon, setPokemon] = useState([]);
+  function handleClick(event: MouseEvent) {}
 
-  useEffect(() => {
-    async function ApiPokemon() {
-      const response = await fetch("https://api.pokemontcg.io/v2/cards");
-      const json = await response.json();
-      setPokemon(json.data);
-    }
-    ApiPokemon();
-  }, []);
-
-  return <div>{pokemon.map((pokemons) => console.log(pokemons))}</div>;
+  return (
+    <div className="box-border grid grid-cols-1  gap-8 bg-red-500  p-10  sm:grid-cols-3 md:grid-cols-4  ">
+      {data?.map((item, index) => (
+        <div className=" grid justify-center" key={index} onClick={handleClick}>
+          <img
+            className=" cursor-pointer"
+            src={item.images.small}
+            alt="imagem"
+          ></img>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Home;
