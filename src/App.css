@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+#img:hover {
+  box-shadow: 0px 0px 10px 5px #fff;
+  border-radius: 5px;
+}
+
 .btn-menu {
+  display: none;
   margin-right: 12px;
+  z-index: 100;
 }
 
 .btn-menu::after {
@@ -16,16 +23,38 @@
   height: 2px;
   box-shadow: 0px 7px 0px 0px rgb(253, 186, 116),
     0px -7px 0px 0px rgb(253, 186, 116);
+  transition: 0.3s;
+}
+.btn-menu.active::after {
+  transform: rotate(90deg);
 }
 
 @media (max-width: 999px) {
-  .menu {
+  .btn-menu {
     display: block;
-    position: absolute;
-    top: 80px;
-    right: 0;
   }
+  .menu {
+    display: none;
+    position: absolute;
+    padding-top: 80px;
+    right: 0;
+    background: black;
+    border-radius: 5px;
+    border: solid 1px rgb(253, 186, 116);
+    height: 430px;
+    animation: top 0.3s forwards;
+  }
+
   .menu.active {
     display: block;
+  }
+}
+
+@keyframes top {
+  from {
+    margin-top: 60px;
+  }
+  to {
+    margin-top: 300px;
   }
 }
