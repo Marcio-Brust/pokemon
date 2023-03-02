@@ -2,59 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#img:hover {
+.img:hover {
   box-shadow: 0px 0px 10px 5px #fff;
   border-radius: 5px;
 }
-
-.btn-menu {
-  display: none;
-  margin-right: 12px;
-  z-index: 100;
-}
-
-.btn-menu::after {
-  content: "";
-  position: absolute;
-  margin-top: 12px;
-  margin-left: 5px;
-  background: rgb(253, 186, 116);
-  width: 20px;
-  height: 2px;
-  box-shadow: 0px 7px 0px 0px rgb(253, 186, 116),
-    0px -7px 0px 0px rgb(253, 186, 116);
-  transition: 0.3s;
-}
-.btn-menu.active::after {
-  transform: rotate(90deg);
-}
-
-@media (max-width: 999px) {
-  .btn-menu {
-    display: block;
-  }
-  .menu {
-    display: none;
-    position: absolute;
-    padding-top: 80px;
-    right: 0;
-    background: black;
-    border-radius: 5px;
-    border: solid 1px rgb(253, 186, 116);
-    height: 430px;
-    animation: top 0.3s forwards;
-  }
-
-  .menu.active {
-    display: block;
-  }
-}
-
-@keyframes top {
-  from {
-    margin-top: 60px;
-  }
-  to {
-    margin-top: 300px;
-  }
+.imgLoading {
+  margin: 0 auto;
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { json } from "stream/consumers";
 
 interface IPokemon {
   id: string;
@@ -17,15 +18,25 @@ interface IPokemon {
 
 export function useFetch(url: string) {
   const [data, setData] = useState<IPokemon[] | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function api() {
-      const response = await fetch(url);
-      const json = await response.json();
-      setData(json.data);
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json.data);
+        if (response.ok === false) throw new Error(json.message);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     }
     api();
   }, [url]);
 
-  return { data };
+  return { data, error, loading };
 }
