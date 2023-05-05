@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 
 const Home = () => {
@@ -11,18 +11,30 @@ const Home = () => {
     (item, index) => dataName.indexOf(item) === index
   );
 
+  const [name, setName] = useState("Ampharos");
+
+  function handleName({ target }) {
+    setName(target.innerText);
+  }
+
   return (
     <>
-      {dataFilter?.map((item, index) => (
-        <section key={index}>
-          <div>
-            <p>{item}</p>
-          </div>
-          <div>
-            <img src="" alt="" />
-          </div>
-        </section>
-      ))}
+      <section className="flex justify-evenly">
+        <div>
+          {dataFilter?.map((item) => (
+            <p key={item} onClick={handleName}>
+              {item}
+            </p>
+          ))}
+        </div>
+        <div>
+          {data
+            ?.filter((item) => item.name === `${name}`)
+            .map((item) => <img src={item.images.small} alt="imagem" />)
+            .reverse()
+            .pop()}
+        </div>
+      </section>
     </>
   );
 };
