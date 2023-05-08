@@ -15,8 +15,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-#root {
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+.name-pokemon {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+p:hover {
+  background: rgb(59 130 246);
 }
 
 .name-pokemon::-webkit-scrollbar {
@@ -24,10 +29,15 @@
 }
 
 .name-pokemon::-webkit-scrollbar-thumb {
-  background: red;
+  background: rgb(59 130 246);
   border-radius: 5px;
-  border: solid 2px blue;
+  border: solid 2px rgb(13, 13, 13);
 }
 .name-pokemon::-webkit-scrollbar-track {
-  background: blue;
+  background: rgb(13, 13, 13);
+  border-radius: 5px;
+}
+
+.imgPokemon {
+  max-width: 240px;
 }

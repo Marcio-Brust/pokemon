@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="mt-40  flex justify-evenly bg-slate-50">
+      <section className="mt-40 box-border flex justify-evenly bg-slate-50">
         <div
           className="name-pokemon"
           style={{
@@ -30,7 +30,11 @@ const Home = () => {
           }}
         >
           {dataFilter?.map((item) => (
-            <p style={{ cursor: "pointer" }} key={item} onClick={handleName}>
+            <p
+              style={{ cursor: "pointer", paddingLeft: "10px" }}
+              key={item}
+              onClick={handleName}
+            >
               {item}
             </p>
           ))}
@@ -38,7 +42,13 @@ const Home = () => {
         <div>
           {data
             ?.filter((item) => item.name === `${name}`)
-            .map((item) => <img src={item.images.small} alt="imagem" />)
+            .map((item) => (
+              <img
+                className="imgPokemon"
+                src={item.images.small}
+                alt="imagem"
+              />
+            ))
             .reverse()
             .pop()}
         </div>
