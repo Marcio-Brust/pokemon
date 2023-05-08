@@ -19,10 +19,18 @@ const Home = () => {
 
   return (
     <>
-      <section className="flex justify-evenly">
-        <div>
+      <section className="mt-40  flex justify-evenly bg-slate-50">
+        <div
+          className="name-pokemon"
+          style={{
+            maxWidth: "350px",
+            height: "50vh",
+            fontSize: "1rem",
+            overflowY: "auto",
+          }}
+        >
           {dataFilter?.map((item) => (
-            <p key={item} onClick={handleName}>
+            <p style={{ cursor: "pointer" }} key={item} onClick={handleName}>
               {item}
             </p>
           ))}
