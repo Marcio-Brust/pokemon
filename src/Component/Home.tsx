@@ -5,10 +5,10 @@ const Home = () => {
   const api = "https://api.pokemontcg.io/v2/";
   const { data, error, loading } = useFetch(`${api}cards`);
 
-  const dataName = data?.map((item) => item.name);
+  const dataName = data?.map((item: any) => item.name);
 
   const dataFilter = dataName?.filter(
-    (item, index) => dataName.indexOf(item) === index
+    (item: string, index: number) => dataName.indexOf(item) === index
   );
 
   const [name, setName] = useState("Ampharos");
@@ -29,7 +29,7 @@ const Home = () => {
             overflowY: "auto",
           }}
         >
-          {dataFilter?.map((item) => (
+          {dataFilter?.map((item: string) => (
             <p
               style={{ cursor: "pointer", paddingLeft: "10px" }}
               key={item}
@@ -41,8 +41,8 @@ const Home = () => {
         </div>
         <div>
           {data
-            ?.filter((item) => item.name === `${name}`)
-            .map((item) => (
+            ?.filter((item: any) => item.name === `${name}`)
+            .map((item: any) => (
               <img
                 className="imgPokemon"
                 src={item.images.small}
