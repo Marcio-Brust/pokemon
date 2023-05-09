@@ -13,13 +13,21 @@ const Home = () => {
 
   const [name, setName] = useState("Ampharos");
 
-  function handleName({ target }) {
-    setName(target.innerText);
+  function handleName(event) {
+    event.preventDefault();
+    const p = document.querySelectorAll("p");
+
+    p.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    setName(event.target.innerText);
+    event.target.classList.toggle("active");
   }
 
   return (
     <>
-      <section className="mt-40 box-border flex justify-evenly bg-slate-50">
+      <section className="mt-30 box-border flex justify-evenly bg-slate-50">
         <div
           className="name-pokemon"
           style={{
@@ -31,6 +39,7 @@ const Home = () => {
         >
           {dataFilter?.map((item) => (
             <p
+              id={item}
               style={{ cursor: "pointer", paddingLeft: "10px" }}
               key={item}
               onClick={handleName}

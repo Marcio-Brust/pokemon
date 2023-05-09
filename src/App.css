@@ -20,8 +20,9 @@
   font-weight: bold;
 }
 
-p:hover {
-  background: rgb(59 130 246);
+p:hover,
+p.active {
+  background: rgb(169, 190, 225);
 }
 
 .name-pokemon::-webkit-scrollbar {
@@ -29,7 +30,7 @@ p:hover {
 }
 
 .name-pokemon::-webkit-scrollbar-thumb {
-  background: rgb(59 130 246);
+  background: rgb(169, 190, 225);
   border-radius: 5px;
   border: solid 2px rgb(13, 13, 13);
 }
