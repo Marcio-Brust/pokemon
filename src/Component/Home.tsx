@@ -3,6 +3,7 @@ import { useFetch } from "../Hooks/useFetch";
 
 const Home = () => {
   const api = "https://api.pokemontcg.io/v2/";
+
   const { data, error, loading } = useFetch(`${api}cards`);
 
   const dataName = data?.map((item) => item.name);
@@ -13,16 +14,15 @@ const Home = () => {
 
   const [name, setName] = useState("Ampharos");
 
-  function handleName(event) {
-    event.preventDefault();
+  function handleName({ target }) {
     const p = document.querySelectorAll("p");
 
     p.forEach((item) => {
       item.classList.remove("active");
     });
 
-    setName(event.target.innerText);
-    event.target.classList.toggle("active");
+    setName(target.innerText);
+    target.classList.toggle("active");
   }
 
   return (
