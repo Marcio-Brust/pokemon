@@ -7,7 +7,7 @@ import Home from "./Component/Home";
 
 function App() {
   return (
-    <div className="bg-slate-50">
+    <div className="body">
       <BrowserRouter>
         <Header />
         <Routes>{<Route path="/" element={<Home />} />}</Routes>

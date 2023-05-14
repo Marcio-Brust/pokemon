@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
+import { Loading } from "../styled/Loading";
 
 const Home = () => {
   const api = "https://api.pokemontcg.io/v2/";
@@ -14,9 +15,9 @@ const Home = () => {
 
   const [name, setName] = useState("Ampharos");
 
-  function handleName({ target }) {
-    const p = document.querySelectorAll("p");
+  const p = document.querySelectorAll("p");
 
+  function handleName({ target }) {
     p.forEach((item) => {
       item.classList.remove("active");
     });
@@ -24,10 +25,15 @@ const Home = () => {
     setName(target.innerText);
     target.classList.toggle("active");
   }
+  if (p) {
+    const ampharos = document.getElementById("#Ampharos");
+    ampharos?.classList.add("active");
+  }
 
+  if (loading) return <Loading style={{ margin: "0 auto" }}></Loading>;
   return (
     <>
-      <section className="mt-30 box-border flex justify-evenly bg-slate-50">
+      <section className="bodyFull box-border flex justify-evenly">
         <div
           className="name-pokemon"
           style={{
@@ -40,7 +46,11 @@ const Home = () => {
           {dataFilter?.map((item) => (
             <p
               id={item}
-              style={{ cursor: "pointer", paddingLeft: "10px" }}
+              style={{
+                cursor: "pointer",
+                padding: "5px 0 5px 10px",
+                borderRadius: "5px",
+              }}
               key={item}
               onClick={handleName}
             >
