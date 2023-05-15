@@ -4,30 +4,24 @@ import { Loading } from "../styled/Loading";
 
 const Home = () => {
   const api = "https://api.pokemontcg.io/v2/";
-
   const { data, error, loading } = useFetch(`${api}cards`);
 
   const dataName = data?.map((item) => item.name);
-
   const dataFilter = dataName?.filter(
     (item, index) => dataName.indexOf(item) === index
   );
 
   const [name, setName] = useState("Ampharos");
 
-  const p = document.querySelectorAll("p");
-
   function handleName({ target }) {
+    const p = document.querySelectorAll("p");
+
     p.forEach((item) => {
       item.classList.remove("active");
     });
 
-    setName(target.innerText);
     target.classList.toggle("active");
-  }
-  if (p) {
-    const ampharos = document.getElementById("#Ampharos");
-    ampharos?.classList.add("active");
+    setName(target.innerText);
   }
 
   if (loading) return <Loading style={{ margin: "0 auto" }}></Loading>;
