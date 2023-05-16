@@ -9,3 +9,127 @@
 .imgLoading {
   margin: 0 auto;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #a1bff6;
+}
+
+.bodyFull {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 100px;
+  display: flex;
+  justify-content: center;
+}
+.bodyFullMobile {
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.name-pokemon {
+  font-family: monospace;
+  font-weight: bold;
+  max-width: 350px;
+  height: 50vh;
+  font-size: 1rem;
+  overflow-y: auto;
+}
+.nome-pokemonMobile {
+  max-width: 350px;
+  height: 20vh;
+  font-size: 1rem;
+  overflow-y: auto;
+}
+
+.searchDiv {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 60px;
+  gap: 5px;
+}
+.search {
+  background: #fff;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 2px #4169e1;
+  font-weight: bold;
+  font-size: 1.1;
+  font-family: monospace;
+  width: 200px;
+  cursor: pointer;
+}
+.btn {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+p:hover,
+p.active {
+  background: #4169e1;
+}
+
+.name-pokemon::-webkit-scrollbar {
+  width: 20px;
+}
+.nome-pokemonMobile::-webkit-scrollbar {
+  width: 20px;
+}
+
+.name-pokemon::-webkit-scrollbar-thumb {
+  background: #4169e1;
+  border-radius: 5px;
+  border: solid 2px rgb(13, 13, 13);
+}
+.nome-pokemonMobile::-webkit-scrollbar-thumb {
+  background: #4169e1;
+  border-radius: 5px;
+  border: solid 2px rgb(13, 13, 13);
+}
+
+.name-pokemon::-webkit-scrollbar-track {
+  background: rgb(13, 13, 13);
+  border-radius: 5px;
+}
+
+.nome-pokemonMobile::-webkit-scrollbar-track {
+  background: rgb(13, 13, 13);
+  border-radius: 5px;
+}
+
+.imgPokemon {
+  max-width: 200px;
+}
+.imgPokemonMobile {
+  max-width: 150px;
+}
+.error {
+  animation: showright 0.5s forwards;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  animation: showright 0.5s forwards;
+}
+
+@keyframes showright {
+  from {
+    margin-left: 50px;
+    opacity: 0.2;
+  }
+  to {
+    margin: initial;
+    opacity: initial;
+  }
+}

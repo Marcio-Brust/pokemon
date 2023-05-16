@@ -1,9 +1,14 @@
 import React from "react";
+import logo from "../assets/img/pokemon-4096.png";
 
 const Header = () => {
   return (
-    <header className="box-border flex  items-center justify-evenly bg-black p-5  font-semibold text-cyan-50">
-      <h1 className=" text-h1 text-orange-300">POKEMON</h1>{" "}
+    <header className=" box-border flex items-center  justify-center">
+      <img
+        style={{ width: "220px", display: "block" }}
+        src={logo}
+        alt="imagem"
+      />
     </header>
   );
 };
