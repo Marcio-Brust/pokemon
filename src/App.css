@@ -20,11 +20,30 @@
 .bodyFull {
   margin-top: 30px;
   margin-bottom: 30px;
+  gap: 30px;
 }
 
 .name-pokemon {
   font-family: monospace;
   font-weight: bold;
+}
+
+.searchDiv {
+  display: grid;
+  justify-content: center;
+  gap: 5px;
+}
+.search {
+  background: #fff;
+  height: 30px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+.btn {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 5px;
 }
 
 p:hover,
@@ -47,5 +66,26 @@ p.active {
 }
 
 .imgPokemon {
-  max-width: 240px;
+  max-width: 200px;
+}
+
+span {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  animation: showright 0.5s forwards;
+}
+
+@keyframes showright {
+  from {
+    margin-left: 50px;
+    opacity: 0.2;
+  }
+  to {
+    margin: initial;
+    opacity: initial;
+  }
 }
