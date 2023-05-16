@@ -2,26 +2,34 @@ import React, { useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 import { Loading } from "../styled/Loading";
 import gif from "../assets/img/pokeball-throwing.gif";
+import useMedia from "../Hooks/useMedia";
 
 const Home = () => {
   const api = "https://api.pokemontcg.io/v2/";
+
   const { data, error, loading } = useFetch(`${api}cards`);
+  const [name, setName] = useState("Lugia");
+  const [error2, setError2] = useState<string | null>(null);
+
+  const mobile = useMedia("(max-width: 50rem)");
 
   const dataName = data?.map((item) => item.name);
   const dataFilter = dataName?.filter(
     (item, index) => dataName.indexOf(item) === index
   );
 
-  const [name, setName] = useState("Lugia");
-
   function searchName() {
     const namePokemon = document.querySelector("input");
-
     if (namePokemon) {
       const nomePokemon = dataName?.find((item) => item === namePokemon.value);
-
-      if (nomePokemon) {
-        setName(nomePokemon);
+      if (nomePokemon === undefined) {
+        const errorPokemon = "Pokemon não encontrado!!!";
+        setError2(errorPokemon);
+      } else {
+        setError2(null);
+        if (nomePokemon) {
+          setName(nomePokemon);
+        }
       }
     }
   }
@@ -36,11 +44,12 @@ const Home = () => {
     target.classList.toggle("active");
     setName(target.innerText);
   }
-  if (error) return <div>oi</div>;
+
   if (loading) return <Loading style={{ margin: "0 auto" }}></Loading>;
+
   return (
     <>
-      <div className="searchDiv">
+      <div className={`searchDiv`}>
         {" "}
         <label
           htmlFor="search"
@@ -49,27 +58,34 @@ const Home = () => {
             fontSize: "1.1rem",
             fontWeight: "bold",
             fontFamily: "monospace",
+            marginLeft: "4px",
           }}
         >
           Buscar Pokemon
         </label>
         <div className="flex">
           <input type="text" className="search" name="search" id="search" />
+
           <button className="btn" onClick={searchName}>
             <img src={gif} alt="imagem" />
           </button>
         </div>
-      </div>
-      <section className="bodyFull  box-border flex justify-center">
         <div
-          className="name-pokemon"
           style={{
-            maxWidth: "350px",
-            height: "50vh",
-            fontSize: "1rem",
-            overflowY: "auto",
+            color: "red",
+            fontFamily: "monospace",
+            fontSize: "0.6rem",
+            fontWeight: "bold",
+            marginLeft: "4px",
+            height: "10px",
           }}
         >
+          {error2}
+        </div>
+      </div>
+
+      <section className={`${mobile ? "bodyFullMobile" : "bodyFull"}  `}>
+        <div className={`${mobile ? "nome-pokemonMobile" : "name-pokemon"}`}>
           {dataFilter?.map((item) => (
             <p
               id={item}
@@ -91,7 +107,7 @@ const Home = () => {
             .map((item) => (
               <div className=" flex">
                 <img
-                  className="imgPokemon"
+                  className={`${mobile ? "imgPokemonMobile" : "imgPokemon"}`}
                   src={item.images.small}
                   alt="imagem"
                 />
