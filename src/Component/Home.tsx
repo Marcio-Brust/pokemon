@@ -105,13 +105,15 @@ const Home = () => {
           {data
             ?.filter((item) => item.name === `${name}`)
             .map((item) => (
-              <div className=" flex">
+              <div
+                className={`${mobile ? "pokemonInfoMobile" : "pokemonInfo"}`}
+              >
                 <img
                   className={`${mobile ? "imgPokemonMobile" : "imgPokemon"}`}
                   src={item.images.small}
                   alt="imagem"
                 />
-                <div className="ml-5 grid">
+                <div className="status ml-5 grid">
                   <span>Tipo: {item.types.toString()}</span>
                   <span>Level: {item.level}</span>
                   <span>Hp: {item.hp}</span>

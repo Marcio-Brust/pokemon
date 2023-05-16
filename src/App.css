@@ -29,6 +29,8 @@
   gap: 30px;
   justify-content: center;
   margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .name-pokemon {
@@ -44,6 +46,8 @@
   height: 20vh;
   font-size: 1rem;
   overflow-y: auto;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .searchDiv {
@@ -103,11 +107,20 @@ p.active {
   border-radius: 5px;
 }
 
+.pokemonInfo {
+  display: flex;
+  box-sizing: border-box;
+}
+.pokemonInfoMobile {
+  box-sizing: border-box;
+  display: flex;
+}
+
 .imgPokemon {
   max-width: 200px;
 }
 .imgPokemonMobile {
-  max-width: 150px;
+  max-width: 120px;
 }
 .error {
   animation: showright 0.5s forwards;
@@ -121,6 +134,9 @@ span {
   font-family: monospace;
   text-align: center;
   animation: showright 0.5s forwards;
+}
+.pokemonInfoMobile span {
+  font-size: 0.6rem;
 }
 
 @keyframes showright {
